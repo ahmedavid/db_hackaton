@@ -72,25 +72,29 @@ CORS(app)
 @app.route('/api', methods=['GET'])
 def get_data():
     # Get query parameters
+    query = request.args.get('query')
     param1 = request.args.get('param1')
     param2 = request.args.get('param2')
     param3 = request.args.get('param3')
 
     # Simulate data processing or fetching
     data = {
+        'query': query,
         'param1': param1,
         'param2': param2,
         'param3': param3,
         'message': 'Data successfully retrieved'
     }
 
+    query = data['query']
+    response = queryLLAMA(query)
+
     # Return the data as JSON
-    return jsonify(data)
+    return jsonify(response)
 
-if __name__ == '__main__':
-    app.run(host="0.0.0.0",debug=True)
 
-def query(prompt):
+
+def queryLLAMA(prompt):
     # filename = "peterpan.txt"
     filename = "Questions.md"
     paragraphs = parse_file(filename)
@@ -118,10 +122,13 @@ def query(prompt):
         ],
     )
     print("\n\n")
-    print(response["message"]["content"])  
+    print(response["message"]["content"]) 
+
+    return response["message"]["content"]
 
 
-
+if __name__ == '__main__':
+    app.run(host="0.0.0.0",debug=True)
 
 def main2():
     SYSTEM_PROMPT = """You are a helpful reading assistant who answers questions 

@@ -1,4 +1,5 @@
 const form = document.querySelector("form")
+const answer = document.querySelector("#answer")
 
 function sendQuery() {
   // fetch("http://localhost:8080", {})
@@ -6,7 +7,7 @@ function sendQuery() {
 
   // Parameters to be included in the query string
   const params = {
-      param1: 'value1',
+      query: 'What is the dresscode?',
       param2: 'value2',
       param3: 'value3'
   };
@@ -26,6 +27,8 @@ function sendQuery() {
       })
       .then(data => {
           console.log('Data received:', data); // Handle the data
+
+          answer.textContent = data
       })
       .catch(error => {
           console.error('There was a problem with the fetch operation:', error);
