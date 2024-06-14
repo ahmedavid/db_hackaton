@@ -1,10 +1,38 @@
 html, body {
+  background-image: url("background.jpg");
   height: 100%;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Align items to the top of the flex container */
   padding-top: 50px; /* Offset from the top */
+}
+
+li {
+  flex:1;
+}
+
+#pageTitle {
+  margin-bottom: 48px;
+}
+
+#promptInput {
+
+  padding: 24px;
+  font-size: 32px;
+  margin-bottom: 48px;
+}
+
+#promptBtn {
+  padding: 24px;
+}
+
+#answer {
+  margin-top: 24px;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 24px;
+  font-size: 32px;
 }
 
 .container {
