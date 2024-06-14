@@ -63,7 +63,34 @@ def find_most_similar(needle, haystack):
     ]
     return sorted(zip(similarity_scores, range(len(haystack))), reverse=True)
 
-def main():
+
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app) 
+
+@app.route('/api', methods=['GET'])
+def get_data():
+    # Get query parameters
+    param1 = request.args.get('param1')
+    param2 = request.args.get('param2')
+    param3 = request.args.get('param3')
+
+    # Simulate data processing or fetching
+    data = {
+        'param1': param1,
+        'param2': param2,
+        'param3': param3,
+        'message': 'Data successfully retrieved'
+    }
+
+    # Return the data as JSON
+    return jsonify(data)
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0",debug=True)
+
+def query(prompt):
     # filename = "peterpan.txt"
     filename = "Questions.md"
     paragraphs = parse_file(filename)
@@ -76,7 +103,7 @@ def main():
         Context:
     """
 
-    prompt = input("what do you want to know? -> ")
+    # prompt = input("what do you want to know? -> ")
     prompt_embedding = ollama.embeddings(model="nomic-embed-text", prompt=prompt)["embedding"]
     most_similar_chunks = find_most_similar(prompt_embedding, embeddings)[:5]
     response = ollama.chat(
