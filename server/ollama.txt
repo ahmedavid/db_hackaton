@@ -1,0 +1,7 @@
+import ollama
+
+ollama.chat(model='llama3', messages=[
+  {'role':'user', 'content': 'Why sky is blue?'}
+])
+
+ollama.embeddings(model='llama3', prompt='The dog ran fast')
