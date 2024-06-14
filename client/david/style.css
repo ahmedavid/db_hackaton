@@ -1,3 +1,23 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top of the flex container */
+  padding-top: 50px; /* Offset from the top */
+}
+
+.container {
+  text-align: center;
+}
+
+.content {
+  max-width: 600px; /* Adjust max-width as per your design */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
 #answer {
   padding: 12px;
 }
