@@ -1,10 +1,13 @@
 const form = document.querySelector("form")
 const answer = document.querySelector("#answer")
 const promptInput = document.querySelector("#promptInput")
+
 const promptBtn = document.querySelector("#promptBtn")
+const supportBtn = document.querySelector("#supportBtn")
 const promptBtnSpinner = document.querySelector("#promptBtnSpinner")
 
-promptBtnSpinner.style.visibility = "hidden"
+promptBtnSpinner.style.display = "none"
+supportBtn.style.display = "none"
 
 let buttonDisabled = true
 
@@ -25,8 +28,8 @@ function sendQuery() {
   console.log('Final URL:', url.toString());
 
   promptBtn.disabled = true
-  promptBtn.style.visibility = "hidden"
-  promptBtnSpinner.style.visibility = "visible"
+  promptBtn.style.display = "none"
+  promptBtnSpinner.style.display = "block"
 
   // Send the GET request using fetch
   fetch(url)
@@ -39,16 +42,20 @@ function sendQuery() {
       .then(data => {
           console.log('Data received:', data); // Handle the data
 
+          if(data.includes("don't know") || data.includes("I'am not sure")) {
+            supportBtn.style.display = "block"
+          }
+
           answer.textContent = data
           promptBtn.disabled = false
-          promptBtn.style.visibility = "visible"
-          promptBtnSpinner.style.visibility = "hidden"
+          promptBtn.style.display = "block"
+          promptBtnSpinner.style.display = "none"
       })
       .catch(error => {
           console.error('There was a problem with the fetch operation:', error);
           promptBtn.disabled = false
-          promptBtn.style.visibility = "visible"
-          promptBtnSpinner.style.visibility = "hidden"
+          promptBtn.style.display = "block"
+          promptBtnSpinner.style.display = "none"
       });
 }
 
