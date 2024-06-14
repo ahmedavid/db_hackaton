@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graph of the equation</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css')}}">
+</head>
+<body>
+  <h2>Equation parameters:</h2>
+  <h4>{{a, b, c}}</h4>
+  <h2>Equation roots:</h2>
+  <h4>{{roots}}</h4><br>
+  <h2>Parabola plot:</h2>
+  <img src="data:image/png;base64, {{picture}}" alt="plot">
+
+
+</body>
+</html>

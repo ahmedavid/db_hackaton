@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css')}}">
+    <title>Main Page</title>
+</head>
+<body>
+    <h3 id="welcomeText">{{ message }}</h3>
+    <script src="/static/script.js"></script>
+    <p id="description">How can we help you?</p>
+    <br>
+    <form id="questionForm" method="post">
+        <label for="question">Ask us:</label>
+        <input type="text" id="question" name="question" required>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <label for="answer">Answer:</label>
+    <div id="answer" class="answer-field"></div>
+</body>
+</html>
