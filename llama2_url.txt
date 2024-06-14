@@ -5,3 +5,4 @@ https://medium.com/@sumudithalanz/unlocking-the-power-of-large-language-models-a
 
 3) Customize without retraing
 https://www.youtube.com/watch?v=V1Mz8gMBDMo&list=PL4041kTesIWby5zznE5UySIsGPrGuEqdB&index=5
+https://github.com/horizon-ui/chatgpt-ai-template?tab=readme-ov-file
