@@ -8,15 +8,24 @@
 <body>
     <h3 id="welcomeText">{{ message }}</h3>
     <script src="/static/script.js"></script>
-    <p id="description">How can we help you?</p>
+    <p id="description">This is the QA online session. 
+        Here you can get all the information about company's rules and policies.</p>
     <br>
-    <form id="questionForm" method="post">
-        <label for="question">Ask us:</label>
-        <input type="text" id="question" name="question" required>
-        <button type="submit">Submit</button>
-    </form>
+    <p id="description">If you have any question, type it in the field below:</p>
     <br>
-    <label for="answer">Answer:</label>
-    <div id="answer" class="answer-field"></div>
+    <div id="container">
+        <div id="randomQuestions">
+            <p>Here are some common questions:</p>
+        </div>
+        <form id="questionForm" method="post">
+            <label for="question">Enter your question:</label>
+            <input type="text" id="question" name="question" required>
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+        <label for="answer">Answer:</label>
+        <div id="answer" class="answer-field"></div>
+        <button id="supportBtn" type="button">Contact live-assistant</button>
+    </div>
 </body>
 </html>

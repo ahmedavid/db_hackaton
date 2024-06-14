@@ -95,3 +95,42 @@ label {
     color:#afacac;
     text-align: left;
 }
+
+#randomQuestions {
+    margin: 20px auto;
+    width: 50%;
+}
+
+.random-question {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    background-color: #ffffff;
+    color: #afacac;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.random-question:hover {
+    background-color: #dddfe1;
+}
+
+
+#supportBtn {
+    margin: auto;
+    display: none; /* Initially hidden */
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    background-color: #f9d441db;
+    color: rgb(0, 0, 0);
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#supportBtn:hover {
+    background-color: #f9d441db;
+}
+

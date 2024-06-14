@@ -10,7 +10,7 @@ templates = Jinja2Templates(directory="templates")
 
 # Main page
 @app.get("/")
-async def read_root(request: Request, message='Welcome to Deutsche Bank support center!'):
+async def read_root(request: Request, message='Welcome Deutsche Bank support Center!'):
     return templates.TemplateResponse('index.html', {"request": request, 'message': message})
 
 @app.post("/solve")

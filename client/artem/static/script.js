@@ -1,8 +1,56 @@
 document.addEventListener("DOMContentLoaded", function() {
     const welcomeText = document.getElementById("welcomeText");
+    const supportBtn = document.querySelector("#supportBtn")
+    supportBtn.style.display = "none"
     setTimeout(() => {
         welcomeText.style.opacity = 1;
     }, 100); // Delay to allow the DOM to fully load
+
+    const questions = [
+        "What is the company's dress code policy?",
+        "How can I request time off?",
+        "What are the working hours?",
+        "How do I access my employee benefits?",
+        "What is the company policy on remote work?",
+        "How do I report a technical issue?",
+        "Where can I find the employee handbook?",
+        "What is the process for submitting expense reports?",
+        "How do I enroll in the company's health insurance plan?",
+        "What is the procedure for filing a complaint?",
+        "How do I reset my company email password?",
+        "What are the safety protocols in the office?",
+        "How can I update my personal information?",
+        "What training programs are available?",
+        "How do I contact HR?",
+        "What is the company's policy on social media usage?",
+        "How do I book a meeting room?",
+        "What are the guidelines for using the company gym?",
+        "How can I participate in the company's volunteer programs?",
+        "What are the company's core values?"
+    ];
+
+    function getRandomQuestions() {
+        const shuffled = questions.sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, 3);
+    }
+
+    function displayRandomQuestions() {
+        const randomQuestionsContainer = document.getElementById('randomQuestions');
+        const randomQuestions = getRandomQuestions();
+
+        randomQuestions.forEach(question => {
+            const button = document.createElement('button');
+            button.className = 'random-question';
+            button.textContent = question;
+            button.onclick = () => {
+                document.getElementById('question').value = question;
+                sendQuery(question);
+            };
+            randomQuestionsContainer.appendChild(button);
+        });
+    }
+
+    displayRandomQuestions();
 });
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -39,8 +87,13 @@ function sendQuery(query) {
             // Log the received data to inspect its structure
             console.log('Data received:', data);
 
+            
+            if(data.includes("Don't know") || data.includes("I'am not sure") || data.includes("don't know") || data.includes("I'm not sure")){
+                supportBtn.style.display = "block"
+            }
+
             // Update this line according to the structure of the received data
-            const answer = data || "Your question is not very easy to answer... Could you ask in some other way?";
+            const answer = data || "No answer found";
             console.log('Parsed answer:', answer);
 
             const answerDiv = document.getElementById('answer');
@@ -54,7 +107,7 @@ function sendQuery(query) {
 function typeEffect(element, text) {
     element.innerHTML = "";
     let i = 0;
-    const speed = 10; // typing speed in milliseconds
+    const speed = 50; // typing speed in milliseconds
     function typeWriter() {
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
